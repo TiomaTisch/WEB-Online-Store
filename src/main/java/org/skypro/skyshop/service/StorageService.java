@@ -22,8 +22,8 @@ public class StorageService {
     // Метод для инициализации тестовых данных
     private void initializeTestData() {
         // Создание тестовых продуктов
-        Product product1 = new Product(UUID.randomUUID(), "Яблоко");
-        Product product2 = new Product(UUID.randomUUID(), "Банан");
+        Product product1 = new Product(UUID.randomUUID(), "Яблоко", 300);
+        Product product2 = new Product(UUID.randomUUID(), "Банан", 400);
         productStorage.put(product1.getId(), product1);
         productStorage.put(product2.getId(), product2);
 
@@ -37,6 +37,10 @@ public class StorageService {
     // Метод для получения всех продуктов
     public Collection<Product> getAllProducts() {
         return productStorage.values();
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(productStorage.get(id));
     }
 
     // Метод для получения всех статей

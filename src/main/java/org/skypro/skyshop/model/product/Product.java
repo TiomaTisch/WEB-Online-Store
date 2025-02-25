@@ -12,10 +12,12 @@ public class Product implements Searchable {
 
     // другие поля класса
     private final  String name;
+    private final Integer price;
 
     // Конструктор с добавлением параметра id
-    public Product(UUID id, String name) {
+    public Product(UUID id, String name, Integer price) {
         this.id = id;
+        this.price = price;
         // инициализация других полей
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Название продукта не может быть пустым или состоять только из пробелов.");
@@ -30,11 +32,8 @@ public class Product implements Searchable {
     }
 
     // Геттеры и сеттеры для других полей
-    public String getName() {
-        return name;
-    }
-
-//    public abstract int getPrice();
+    public String getName() { return name; }
+    public Integer getPrice(){ return price; }
 
     @Override @JsonIgnore
     public String getSearchTerm() {
@@ -52,7 +51,6 @@ public class Product implements Searchable {
     }
 
     // Другие методы
-//    public abstract boolean isSpecial();
 
     @Override
     public boolean equals(Object o) {
